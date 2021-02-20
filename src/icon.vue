@@ -1,6 +1,6 @@
 <template>
   <svg class = "g-icon">
-    <use :xlink:href = "`#i-${name}`"></use>
+    <use v-if = "name" :xlink:href = "`#i-${name}`"></use>
   </svg>
 </template>
 <script>
@@ -9,5 +9,5 @@ export default {
 }
 </script>
 <style lang = "scss">
-  .g-icon { height: 1em; width: 1em; }
+.g-icon { height: 1em; width: 1em; }
 </style>
