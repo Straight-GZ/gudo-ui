@@ -14,3 +14,82 @@ new Vue({
 		loading3: false,
 	}
 })
+
+import chai from 'chai'
+
+const expect = chai.expect
+
+{
+	const Construcor = Vue.extend(Button)
+	const vm = new Construcor({
+		propsData: {
+			icon: 'settings'
+		}
+	})
+	vm.$mount()
+	const useElement = vm.$el.querySelector('use')
+	expect(useElement.getAttribute('xlink:href')).eq('#i-settings')
+	vm.$el.remove()
+	vm.$destroy()
+}
+{
+	const Construcor = Vue.extend(Button)
+	const vm = new Construcor({
+		propsData: {
+			icon: 'settings',
+			loading: true
+		}
+	})
+	vm.$mount()
+	const useElement = vm.$el.querySelector('use')
+	expect(useElement.getAttribute('xlink:href')).eq('#i-loading')
+	vm.$el.remove()
+	vm.$destroy()
+}
+{
+	const Construcor = Vue.extend(Button)
+	const vm = new Construcor({
+		propsData: {
+			icon: 'settings',
+		}
+	})
+	const div = document.createElement('div')
+	document.body.appendChild(div)
+	vm.$mount(div)
+	const svg = vm.$el.querySelector('svg')
+	const {order} = window.getComputedStyle(svg)
+	expect(order).eq('1')
+	vm.$el.remove()
+	vm.$destroy()
+}
+{
+	const Construcor = Vue.extend(Button)
+	const vm = new Construcor({
+		propsData: {
+			icon: 'settings',
+			iconPosition: 'right'
+		}
+	})
+	const div = document.createElement('div')
+	document.body.appendChild(div)
+	vm.$mount(div)
+	const svg = vm.$el.querySelector('svg')
+	const {order} = window.getComputedStyle(svg)
+	expect(order).eq('2')
+	vm.$el.remove()
+	vm.$destroy()
+}
+{
+	const Construcor = Vue.extend(Button)
+	const vm = new Construcor({
+		propsData: {
+			icon: 'settings',
+		}
+	})
+	vm.$mount()
+	vm.$on('click', function () {
+		expect(1).to.eq(1)
+	})
+	const button = vm.$el
+	button.click()
+}
