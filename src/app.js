@@ -16,12 +16,14 @@ new Vue({
 })
 
 import chai from 'chai'
+import spies from 'chai-spies'
 
+chai.use(spies)
 const expect = chai.expect
 
 {
-	const Construcor = Vue.extend(Button)
-	const vm = new Construcor({
+	const Constructor = Vue.extend(Button)
+	const vm = new Constructor({
 		propsData: {
 			icon: 'settings'
 		}
@@ -33,8 +35,8 @@ const expect = chai.expect
 	vm.$destroy()
 }
 {
-	const Construcor = Vue.extend(Button)
-	const vm = new Construcor({
+	const Constructor = Vue.extend(Button)
+	const vm = new Constructor({
 		propsData: {
 			icon: 'settings',
 			loading: true
@@ -47,8 +49,8 @@ const expect = chai.expect
 	vm.$destroy()
 }
 {
-	const Construcor = Vue.extend(Button)
-	const vm = new Construcor({
+	const Constructor = Vue.extend(Button)
+	const vm = new Constructor({
 		propsData: {
 			icon: 'settings',
 		}
@@ -63,8 +65,8 @@ const expect = chai.expect
 	vm.$destroy()
 }
 {
-	const Construcor = Vue.extend(Button)
-	const vm = new Construcor({
+	const Constructor = Vue.extend(Button)
+	const vm = new Constructor({
 		propsData: {
 			icon: 'settings',
 			iconPosition: 'right'
@@ -80,16 +82,16 @@ const expect = chai.expect
 	vm.$destroy()
 }
 {
-	const Construcor = Vue.extend(Button)
-	const vm = new Construcor({
+	const Constructor = Vue.extend(Button)
+	const vm = new Constructor({
 		propsData: {
 			icon: 'settings',
 		}
 	})
 	vm.$mount()
-	vm.$on('click', function () {
-		expect(1).to.eq(1)
-	})
+	const spy = chai.spy(function () { })
+	vm.$on('click', spy)
 	const button = vm.$el
 	button.click()
+	expect(spy).to.have.been.called()
 }
