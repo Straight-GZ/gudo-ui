@@ -15,6 +15,7 @@ new Vue({
 	}
 })
 
+//单元测试
 import chai from 'chai'
 import spies from 'chai-spies'
 
