@@ -18,9 +18,8 @@
 <body>
 <div id = 'app'>
 	<div class = "box">
-<!--		<g-input value = "张三" disabled></g-input>-->
-<!--		<g-input value = "张三" readonly></g-input>-->
-		<g-input value = "李" error = "用户名至少两个字" @change = "inputChange"></g-input>
+		<g-input v-model = "message" error = "用户名至少两个字" @change = "inputChange"></g-input>
+		<p>{{ message }}</p>
 	</div>
 	<div class = "box">
 		<g-button :loading = "loading1" @click = "loading1=!loading1">

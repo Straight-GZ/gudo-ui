@@ -15,13 +15,9 @@ new Vue({
 		loading1: false,
 		loading2: true,
 		loading3: false,
+		message: 'hi'
 	},
 	created() {
-		setTimeout(() => {
-			const event = new Event('change')
-			let inputElement = this.$el.querySelector('input')
-			inputElement.dispatchEvent(event)
-		}, 3000)
 	},
 	methods: {
 		inputChange: (e) => {
