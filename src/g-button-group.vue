@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+  name: 'JianButtonGroup',
   mounted() {
     for (let node of this.$el.children) {
       const name = node.nodeName.toLowerCase()

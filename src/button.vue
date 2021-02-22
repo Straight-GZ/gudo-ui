@@ -12,6 +12,7 @@
 import Icon from './icon.vue'
 
 export default {
+  name: 'JianButton',
   components: {'g-icon': Icon},
   props: {
     icon: {},
