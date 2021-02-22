@@ -12,27 +12,33 @@
 			--button-active-bg: #eee; --border-radius: 4px; --color: #333;
 			--border-color: #999; --border-color-hover: #666; }
 		.box { margin: 20px; }
+		#app {margin: 20px;}
 		body { font-size: var(--font-size); }
 	</style>
 </head>
 <body>
 <div id = 'app'>
-	<g-row>
-		<g-col span = "2">1</g-col>
-		<g-col span = "22">2</g-col>
-	</g-row>
-	<g-row>
-		<g-col span = "6">1</g-col>
-		<g-col span = "18">2</g-col>
-	</g-row>
-	<g-row>
-		<g-col>1</g-col>
-		<g-col>2</g-col>
-	</g-row>
-	<g-row>
-		<g-col>1</g-col>
-		<g-col>2</g-col>
-	</g-row>
+	<div style = "border: 1px solid blue">
+		<g-row gutter = "20">
+			<g-col span = "4">1</g-col>
+			<g-col span = "20">2</g-col>
+		</g-row>
+		<g-row gutter = "20">
+			<g-col span = "4">1</g-col>
+			<g-col span = "20">2</g-col>
+		</g-row>
+		<g-row gutter = "20">
+			<g-col span = "2">1</g-col>
+			<g-col span = "20" offset = "2">2</g-col>
+		</g-row>
+		<g-row gutter = "10">
+			<g-col span = "2">1</g-col>
+			<g-col span = "6">1</g-col>
+			<g-col span = "4">1</g-col>
+			<g-col span = "4">1</g-col>
+			<g-col span = "8">2</g-col>
+		</g-row>
+	</div>
 	<hr>
 	<div class = "box">
 		<g-input v-model = "message" error = "用户名至少两个字" @change = "inputChange"></g-input>
