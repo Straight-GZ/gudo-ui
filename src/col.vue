@@ -22,18 +22,30 @@ export default {
     pc: {type: Object, validator,},
     widePc: {type: Object, validator,},
   },
-  methods: {},
   data() {
     return {gutter: 0}
+  },
+  methods: {
+    createClasses(obj, str = '') {
+      let array = []
+      if (!obj) {return []}
+      if (obj.span) {array.push(`col-${str}span-${obj.span}`)}
+      if (obj.offset) {array.push(`col-${str}offset-${obj.offset}`)}
+      return array
+    }
   },
   computed: {
     colClass() {
       let {span, offset, ipad, narrowPc, pc, widePc} = this
-      return [span && `col-span-${span}`, offset && `col-offset-span-${offset}`,
-        ...(ipad && ipad.span ? [`col-ipad-span-${ipad.span}`] : []),
-        ...(narrowPc && narrowPc.span ? [`col-narrow-pc-span-${narrowPc.span}`] : []),
-        ...(pc && pc.span ? [`col-pc-span-${pc.span}`] : []),
-        ...(widePc && widePc.span ? [`col-wide-pc-span-${widePc.span}`] : [])]
+      const createClasses = this.createClasses
+      return [
+        ...createClasses({span: span}),
+        ...createClasses({offset: offset}),
+        ...createClasses(ipad, 'ipad-'),
+        ...createClasses(narrowPc, 'narrow-pc-'),
+        ...createClasses(pc, 'pc-'),
+        ...createClasses(widePc, 'wide-pc-'),
+      ]
     },
     colStyle() {
       return {paddingLeft: this.gutter / 2 + 'px', paddingRight: this.gutter / 2 + 'px'}
