@@ -17,7 +17,6 @@ export default {
   props: {
     span: {type: [Number, String]},
     offset: {type: [Number, String]},
-    phone: {type: Object, validator,},
     ipad: {type: Object, validator,},
     narrowPc: {type: Object, validator,},
     pc: {type: Object, validator,},
@@ -29,14 +28,13 @@ export default {
   },
   computed: {
     colClass() {
-      let {span, offset, phone, ipad, narrowPc, pc, widePc} = this
-      let phoneClass = phone && phone.span ? [`col-phone-span-${phone.span}`] : []
+      let {span, offset, ipad, narrowPc, pc, widePc} = this
       let ipadClass = ipad && ipad.span ? [`col-ipad-span-${ipad.span}`] : []
       let narrowPcClass = narrowPc && narrowPc.span ? [`col-narrow-pc-span-${narrowPc.span}`] : []
       let pcClass = pc && pc.span ? [`col-pc-span-${pc.span}`] : []
       let widePcClass = widePc && widePc.span ? [`col-wide-pc-span-${widePc.span}`] : []
       return [span && `col-span-${span}`, offset && `col-offset-span-${offset}`,
-        ...phoneClass, ...ipadClass, ...narrowPcClass, pcClass, widePcClass]
+        ...ipadClass, ...narrowPcClass, pcClass, widePcClass]
     },
     colStyle() {
       return {paddingLeft: this.gutter / 2 + 'px', paddingRight: this.gutter / 2 + 'px'}
@@ -57,17 +55,6 @@ export default {
       }
     }
   }
-  @media (max-width: 576px) {
-    $class-prefix: col-phone-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}span-#{$n} {
-        width: $n/24 *100%
-      }
-      @for $n from 1 through 24 {
-        &.#{$class-prefix}offset-#{$n} {
-          margin-left: $n/24 *100%
-        }
-      }}}
   @media (min-width: 577px) and (max-width: 768px) {
     $class-prefix: col-ipad-;
     @for $n from 1 through 24 {
