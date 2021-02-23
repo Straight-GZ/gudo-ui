@@ -11,26 +11,26 @@
 		html { --button-height: 32px; --font-size: 14px; --button-bg: white;
 			--button-active-bg: #eee; --border-radius: 4px; --color: #333;
 			--border-color: #999; --border-color-hover: #666; }
-		#app {margin: 20px;}
 		img {max-width: 100%}
 		body { font-size: var(--font-size); }
 	</style>
 	<style>
 		.demo {
-			height: 100px;
+			min-height: 100px;
 			border: 1px solid black;
-			background: #666666;
 		}
 	</style>
 </head>
 <body>
-
 <div id = 'app'>
-	<g-row>
-		<g-col span = "24" :narrow-pc = "{span:8,offset:'2'}" :pc = "{span:6}">
-			<div class = "demo"></div>
-		</g-col>
-	</g-row>
+	<g-layout>
+		<g-sider class = "demo">sider</g-sider>
+		<g-layout>
+			<g-header class = "demo">header</g-header>
+			<g-content class = "demo">content</g-content>
+			<g-footer class = "demo">footer</g-footer>
+		</g-layout>
+	</g-layout>
 </div>
 <script src = "src/app.js"></script>
 </body>
