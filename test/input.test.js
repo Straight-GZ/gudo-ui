@@ -72,7 +72,7 @@ describe('Input', () => {
 				let inputElement = vm.$el.querySelector('input')
 				inputElement.dispatchEvent(event)
 				expect(callback).to.have.been.calledWith('hi')
-				
+
 			})
 		})
 	})
