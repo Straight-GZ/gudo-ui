@@ -39,10 +39,10 @@ new Vue({
 	},
 	methods: {
 		showToast() {
-			this.$toast('文字', {
+			this.$toast('确认删除吗？', {
 				autoClose: false,
 				closeButton: {
-					text: '你', callback(toast) {console.log(toast.autoClose)}
+					text: '确认', callback() {console.log('已经删除了')}
 				}
 			})
 		}
