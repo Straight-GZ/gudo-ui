@@ -39,7 +39,7 @@ new Vue({
 	},
 	methods: {
 		showToast() {
-			this.$toast('确认删除吗？', {
+			this.$toast(`确认删除${parseInt((Math.random() * 100).toString())}吗？`, {
 				autoClose: false,
 				closeButton: {
 					text: '确认', callback() {console.log('已经删除了')}
