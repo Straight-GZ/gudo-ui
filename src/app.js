@@ -38,8 +38,18 @@ new Vue({
 	mounted() {
 	},
 	methods: {
-		showToast() {
+		showToast1() {
+			this.showToast()
+		},
+		showToast2() {
+			this.showToast('bottom')
+		},
+		showToast3() {
+			this.showToast('middle')
+		},
+		showToast(position) {
 			this.$toast(`确认删除${parseInt((Math.random() * 100).toString())}吗？`, {
+				position: position,
 				autoClose: false,
 				closeButton: {
 					text: '确认', callback() {console.log('已经删除了')}
