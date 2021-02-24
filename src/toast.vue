@@ -5,7 +5,7 @@
       <slot v-else></slot>
     </div>
     <span class = "line" ref = "line"></span>
-    <span v-if = "closeButton" class = "text" @click = "close">
+    <span v-if = "closeButton" class = "text" @click = "onClickClose">
       {{ this.closeButton.text }}
     </span>
   </div>
@@ -54,7 +54,11 @@ export default {
     },
     close() {
       this.$el.remove()
+      this.$emit('close',)
       this.$destroy()
+    },
+    onClickClose() {
+      this.close()
       if (this.closeButton && typeof this.closeButton.callback === 'function') {
         this.closeButton.callback(this)
       }
