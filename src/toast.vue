@@ -16,8 +16,11 @@
 export default {
   name: 'JianToast',
   props: {
-    autoClose: {type: Boolean, default: true},
-    closeDelay: {type: Number, default: 5,},
+    autoClose: {
+      type: [Boolean, Number],
+      default: 5,
+      validator(value) {return value === false || typeof value === 'number'}
+    },
     enabledHtml: {type: Boolean, default: false},
     position: {
       type: String, default: 'top', validator(value) {
@@ -46,12 +49,14 @@ export default {
       if (this.autoClose) {
         setTimeout(() => {
           this.close()
-        }, this.closeDelay * 1000)
+        }, this.autoClose * 1000)
       }
     },
     updateStyles() {
       this.$nextTick(() => {
-        this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`
+        if (this.$refs.line) {
+          this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`
+        }
       })
     },
     close() {
