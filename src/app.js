@@ -39,7 +39,13 @@ new Vue({
 	},
 	methods: {
 		showToast() {
-			this.$toast('我是 message')
+			this.$toast('<strong>123 <a href="https://qq.com">qq</a></strong>', {
+				enabledHtml: true,
+				autoClose: false,
+				closeButton: {
+					text: '123', callback(toast) {console.log(toast.autoClose)}
+				}
+			})
 		}
 	}
 })
