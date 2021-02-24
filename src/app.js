@@ -39,7 +39,7 @@ new Vue({
 	},
 	methods: {
 		showToast() {
-			console.log(this.$toast('我是message'))
+			this.$toast('我是 message')
 		}
 	}
 })
