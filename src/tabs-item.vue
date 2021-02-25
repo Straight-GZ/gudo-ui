@@ -1,5 +1,5 @@
 <template>
-  <div class = "tabsItem" @click = "onActive" :class = "classes">
+  <div class = "tabsItem" @click = "onActive" :class = "classes" :data-name = "name">
     <slot></slot>
   </div>
 </template>
@@ -27,10 +27,12 @@ export default {
   methods: {
     onActive() {
       if (this.disabled) {return}
-      this.eventBus.$emit('update:selected', this.name, this)
+      this.eventBus && this.eventBus.$emit('update:selected', this.name, this)
+      this.$emit('click', this)
     }
   },
   mounted() {
+    this.eventBus &&
     this.eventBus.$on('update:selected', (name) => {
       this.active = name === this.name
     })
