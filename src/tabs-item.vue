@@ -36,6 +36,7 @@ export default {
 }
 </script>
 <style lang = "scss" scoped>
+$blue: blue;
 .tabsItem {
   flex-shrink: 0;
   padding: 0 1em;
@@ -45,7 +46,8 @@ export default {
   justify-content: center;
   align-items: center;
   &.active {
-    background: red;
+    color: $blue;
+    font-weight: bold;
   }
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class = "tabsHead">
     <slot></slot>
+    <div class = "line" ref = "line"></div>
     <div class = "actions">
       <slot name = "actions"></slot>
     </div>
@@ -17,7 +18,9 @@ export default {
   inject: ['eventBus'],
   mounted() {
     this.eventBus.$on('update:selected', (name, item) => {
-      console.log(name, item)
+      let {left, width} = item.$el.getBoundingClientRect()
+      this.$refs.line.style.width = `${width}px`
+      this.$refs.line.style.left = `${left}px`
     })
   }
 }
@@ -28,6 +31,13 @@ $height: 40px;
   min-height: $height;
   display: flex;
   justify-content: flex-start;
+  position: relative;
+  > .line {
+    position: absolute;
+    transition: all 350ms;
+    bottom: 0;
+    border-bottom: 1px solid blue;
+  }
   > .actions {
     margin-left: auto;
   }
