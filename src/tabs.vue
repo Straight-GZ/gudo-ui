@@ -4,8 +4,20 @@
   </div>
 </template>
 <script>
+import Vue from 'vue'
+
 export default {
   name: 'JianTabs',
+  data() {
+    return {
+      eventBus: new Vue()
+    }
+  },
+  provide() {
+    return {
+      eventBus: this.eventBus
+    }
+  },
   props: {
     selected: {
       type: String,
@@ -20,7 +32,7 @@ export default {
     }
   },
   mounted() {
-    // this.$emit('updateSelected',)
+    this.eventBus.$emit('update:selected', this.selected)
   }
 }
 </script>

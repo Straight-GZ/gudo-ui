@@ -6,7 +6,15 @@
 </template>
 <script>
 export default {
-	name: 'JianTabsHead'
+  name: 'JianTabsHead',
+  props: {
+    name: {
+      type: String
+    }
+  },
+  inject: ['eventBus'],
+  mounted() {
+  }
 }
 </script>
 <style lang = "scss" scoped>
