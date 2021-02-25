@@ -27,11 +27,13 @@ export default {
 </script>
 <style lang = "scss" scoped>
 $height: 40px;
+$border-color: #ddd;
 .tabsHead {
   min-height: $height;
   display: flex;
   justify-content: flex-start;
   position: relative;
+  border-bottom: 1px solid $border-color;
   > .line {
     position: absolute;
     transition: all 350ms;
@@ -40,6 +42,10 @@ $height: 40px;
   }
   > .actions {
     margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
   }
 }
 </style>
