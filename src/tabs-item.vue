@@ -1,5 +1,5 @@
 <template>
-  <div class = "tabsItem">
+  <div class = "tabsItem" @click = "onActive" :class = "classes">
     <slot></slot>
   </div>
 </template>
@@ -12,13 +12,8 @@ export default {
     }
   },
   props: {
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    name: {
-      type: String
-    }
+    disabled: {type: Boolean, default: false},
+    name: {type: String, required: true}
   },
   computed: {
     classes() {
@@ -34,12 +29,23 @@ export default {
     }
   },
   mounted() {
-    this.eventBus.$on('update:selected', (data) => {
-      this.active = data === this.name
+    this.eventBus.$on('update:selected', (name) => {
+      this.active = name === this.name
     })
   }
 }
 </script>
 <style lang = "scss" scoped>
-.tabsItem {}
+.tabsItem {
+  flex-shrink: 0;
+  padding: 0 1em;
+  min-height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.active {
+    background: red;
+  }
+}
 </style>

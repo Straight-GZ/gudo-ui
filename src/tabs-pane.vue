@@ -1,7 +1,7 @@
 <template>
-	<div class = "tabsPane">
-		<slot></slot>
-	</div>
+  <div class = "tabsPane" v-if = "active" :class = "classes">
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {
@@ -30,5 +30,9 @@ export default {
 }
 </script>
 <style lang = "scss" scoped>
-.tabsPane {}
+.tabsPane {
+  &.active {
+    background: red;
+  }
+}
 </style>

@@ -1,8 +1,10 @@
 <template>
-	<div class = "tabsHead">
-		<slot></slot>
-    <slot name="actions"></slot>
-	</div>
+  <div class = "tabsHead">
+    <slot></slot>
+    <div class = "actions">
+      <slot name = "actions"></slot>
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -18,5 +20,13 @@ export default {
 }
 </script>
 <style lang = "scss" scoped>
-.tabsHead {}
+$height: 40px;
+.tabsHead {
+  min-height: $height;
+  display: flex;
+  justify-content: flex-start;
+  > .actions {
+    margin-left: auto;
+  }
+}
 </style>
