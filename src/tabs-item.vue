@@ -25,7 +25,7 @@ export default {
   inject: ['eventBus'],
   methods: {
     onActive() {
-      this.eventBus.$emit('update:selected', this.name)
+      this.eventBus.$emit('update:selected', this.name, this)
     }
   },
   mounted() {

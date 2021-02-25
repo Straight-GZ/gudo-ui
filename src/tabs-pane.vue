@@ -23,8 +23,8 @@ export default {
   },
   inject: ['eventBus'],
   mounted() {
-    this.eventBus.$on('update:selected', (data) => {
-      this.active = data === this.name
+    this.eventBus.$on('update:selected', (name) => {
+      this.active = name === this.name
     })
   }
 }
