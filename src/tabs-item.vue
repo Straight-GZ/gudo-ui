@@ -18,13 +18,15 @@ export default {
   computed: {
     classes() {
       return {
-        active: this.active
+        active: this.active,
+        disabled: this.disabled
       }
     }
   },
   inject: ['eventBus'],
   methods: {
     onActive() {
+      if (this.disabled) {return}
       this.eventBus.$emit('update:selected', this.name, this)
     }
   },
@@ -37,6 +39,7 @@ export default {
 </script>
 <style lang = "scss" scoped>
 $blue: blue;
+$disabled-text-color: grey;
 .tabsItem {
   flex-shrink: 0;
   padding: 0 1em;
@@ -48,6 +51,10 @@ $blue: blue;
   &.active {
     color: $blue;
     font-weight: bold;
+  }
+  &.disabled {
+    color: $disabled-text-color;
+    cursor: not-allowed;
   }
 }
 </style>
