@@ -39,19 +39,14 @@ Vue.component('g-tabs-pane', TabsPane)
 Vue.use(Plugin)
 new Vue({
 	el: '#app',
-	data: {},
+	data() {
+		return {
+			selected: 'sports'
+		}
+	},
 	mounted() {
 	},
 	methods: {
-		showToast1() {
-			this.showToast()
-		},
-		showToast2() {
-			this.showToast('bottom')
-		},
-		showToast3() {
-			this.showToast('middle')
-		},
 		showToast(position) {
 			this.$toast(`确认删除${parseInt((Math.random() * 100).toString())}吗？`, {
 				position: position,

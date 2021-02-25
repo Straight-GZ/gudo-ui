@@ -1,11 +1,27 @@
 <template>
-	<div class = "tabs">
-		<slot></slot>
-	</div>
+  <div class = "tabs">
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {
-	name: 'JianTabs'
+  name: 'JianTabs',
+  props: {
+    selected: {
+      type: String,
+      required: true
+    },
+    direction: {
+      type: String,
+      default: 'horizontal',
+      validator(value) {
+        return ['horizontal', 'vertical'].indexOf(value) >= 0
+      }
+    }
+  },
+  mounted() {
+    // this.$emit('updateSelected',)
+  }
 }
 </script>
 <style lang = "scss" scoped>
