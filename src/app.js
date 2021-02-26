@@ -49,6 +49,7 @@ new Vue({
 	mounted() {
 	},
 	methods: {
+		yyy() {console.log('yyy')},
 		showToast(position) {
 			this.$toast(`确认删除${parseInt((Math.random() * 100).toString())}吗？`, {
 				position: position,
