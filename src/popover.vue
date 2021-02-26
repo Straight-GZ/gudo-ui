@@ -1,6 +1,6 @@
 <template>
   <div class = "popover" @click.stop = "xxx">
-    <div class = "contentWrapper" v-if = "visible" @click.stop>
+    <div ref = "contentWrapper" class = "contentWrapper" v-if = "visible" @click.stop>
       <slot name = "content"></slot>
     </div>
     <slot></slot>
@@ -24,6 +24,7 @@ export default {
           document.removeEventListener('click', eventHandler)
         }
         this.$nextTick(() => {
+          document.body.appendChild(this.$refs.contentWrapper)
           document.addEventListener('click', eventHandler)
         })
       }
