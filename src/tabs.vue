@@ -31,19 +31,27 @@ export default {
       }
     }
   },
-  mounted() {
-    if (this.$children.length === 0) {
-      console && console.warn && console.warn('tabs的子组件应该是tabs-header和tabs-body，但你没有写子组件')
-    }
-    this.$children.forEach((vm) => {
-      if (vm.$options.name === 'JianTabsHead') {
-        vm.$children.forEach((item) => {
-          if (item.name === this.selected) {
-            this.eventBus.$emit('update:selected', this.selected, item)
-          }
-        })
+  methods: {
+    checkChildren() {
+      if (this.$children.length === 0) {
+        console && console.warn && console.warn('tabs的子组件应该是tabs-header和tabs-body，但你没有写子组件')
       }
-    })
+    },
+    selectTab() {
+      this.$children.forEach((vm) => {
+        if (vm.$options.name === 'JianTabsHead') {
+          vm.$children.forEach((item) => {
+            if (item.name === this.selected) {
+              this.eventBus.$emit('update:selected', this.selected, item)
+            }
+          })
+        }
+      })
+    }
+  },
+  mounted() {
+    this.checkChildren()
+    this.selectTab()
   }
 }
 </script>
