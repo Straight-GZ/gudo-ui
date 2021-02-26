@@ -126,7 +126,6 @@ $border-radius: 4px;
   border: 1px solid $border-color;
   border-radius: $border-radius;
   position: absolute;
-  //box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
   background: white;
   padding: 0.5em 1em;
@@ -143,6 +142,10 @@ $border-radius: 4px;
   &.position-top {
     margin-top: -10px;
     transform: translateY(-100%);
+    &::before, &::after {
+      border-bottom: none;
+      left: 10px;
+    }
     &::before {
       top: 100%;
       border-top-color: black;
@@ -155,6 +158,7 @@ $border-radius: 4px;
   &.position-bottom {
     margin-top: 10px;
     &::before, &::after {
+      border-top: none;
       left: 10px;
     }
     &::before {
@@ -170,6 +174,7 @@ $border-radius: 4px;
     transform: translateX(-100%);
     margin-left: -10px;
     &::before, &::after {
+      border-right: none;
       top: 50%;
       transform: translateY(-50%);
     }
@@ -185,6 +190,7 @@ $border-radius: 4px;
   &.position-right {
     margin-left: 10px;
     &::before, &::after {
+      border-left: none;
       top: 50%;
       transform: translateY(-50%);
     }
